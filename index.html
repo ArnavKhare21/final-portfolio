@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Portfolio</title>
+    <title>Arnav Khare</title>
     <!-- This link brings in the icons (like for email, phone, LinkedIn) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -374,6 +374,49 @@
             margin-top: 1rem;
             margin-bottom: 1.5rem;
             border-radius: 2px;
+        }
+
+        /* ============================================ */
+        /* === MOBILE RESPONSIVENESS (for screens smaller than 768px) === */
+        /* ============================================ */
+        @media (max-width: 768px) {
+            /* --- GENERAL LAYOUT RESETS --- */
+            /* This is the key: we disable the grid entirely on mobile and just stack things */
+            body, .portfolio-container {
+                display: block; /* Go from Grid to simple stacked blocks */
+                padding: 0;
+            }
+
+            /* --- HEADER RESETS --- */
+            /* Make the sticky header full width and reset its grid properties */
+            header {
+                grid-column: auto;
+                border-radius: 0; /* Often looks better full-width */
+            }
+            nav {
+                padding: 0.5rem; /* Reduce padding on small screens */
+            }
+
+            /* --- PANEL RESETS (VERY IMPORTANT) --- */
+            /* Reset all grid and layout properties from the desktop view */
+            .left-panel, .sidebar,
+            .right-panel, .main-content {
+                position: relative;
+                grid-column: auto;
+                grid-row: auto;
+                width: 100%;
+                margin-left: 0;
+                padding: 1.5rem; /* Add consistent padding to the panels */
+            }
+
+            /* Remove the decorative side border which doesn't make sense on mobile */
+            .left-panel, .sidebar {
+                border-right: none;
+            }
+
+            /* --- FONT SIZE ADJUSTMENTS --- */
+            .section-heading, h2 { font-size: 2rem; }
+            .left-panel h1, .sidebar-name { font-size: 1.8rem; }
         }
     </style>
 </head>
