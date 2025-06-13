@@ -26,7 +26,7 @@
             padding: 2rem;
             display: grid; /* Apply CSS Grid to the body */
             grid-template-rows: auto 1fr; /* Two rows: header (auto-sized) and main content (remaining space) */
-            grid-template-columns: 350px 1fr; /* Two-column structure for the whole page */
+            grid-template-columns: 280px 1fr; /* Two-column structure for the whole page - REDUCED FROM 350px */
         }
 
         /* Header */
@@ -45,7 +45,7 @@
             grid-row: 2; /* Second row */
             grid-column: 1 / -1; /* Span both columns */
             display: grid;
-            grid-template-columns: 350px 1fr; /* Two-column structure */
+            grid-template-columns: 280px 1fr; /* Two-column structure - REDUCED FROM 350px */
             gap: 4rem;
             max-width: 1100px;
             margin: 0 auto;
@@ -74,7 +74,7 @@
         }
         
         .profile-name {
-            font-size: 1.8rem;
+            font-size: 1.6rem; /* REDUCED FROM 1.8rem */
             font-weight: bold;
             color: #638872; /* All Headings - Rich Russian Green */
             margin-bottom: 0.5rem;
@@ -83,7 +83,7 @@
         .profile-title {
             color: #30253E; /* Primary Text Color - Dark Purple */
             margin-bottom: 2rem;
-            font-size: 1rem;
+            font-size: 0.9rem; /* REDUCED FROM 1rem */
         }
 
         .contact-list {
@@ -98,7 +98,7 @@
             align-items: center;
             margin-bottom: 1rem;
             color: #30253E; /* Primary Text Color - Dark Purple */
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* REDUCED FROM 0.9rem */
         }
 
         .icon-box {
@@ -117,7 +117,7 @@
         }
 
         .social-links {
-            margin-top: auto;
+            margin-top: 2.5rem; /* CHANGED FROM margin-top: auto; */
         }
 
         .social-links a {
@@ -335,6 +335,46 @@
             margin-top: 1rem;
             border-radius: 2px;
         }
+
+        /* Resume heading styles */
+        .heading-wrapper {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .resume-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #638872; /* All Headings - Rich Russian Green */
+        }
+
+        .click-me-prompt {
+            font-size: 0.9rem;
+            font-weight: normal;
+            opacity: 0.5; /* This creates the low opacity effect */
+            margin-left: 1rem; /* This adds space from the word "Resume" */
+            text-transform: lowercase;
+            font-style: italic;
+        }
+
+        .resume-heading a {
+            text-decoration: none;
+            color: inherit; /* This makes it take the color of the heading */
+        }
+
+        .resume-heading a:hover {
+            color: #C3C88C; /* Changes the text to your sage green accent color on hover */
+        }
+
+        /* Underline for resume section */
+        .underline {
+            width: 80px;
+            height: 4px;
+            background: #638872; /* Russian Green underline */
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body>
@@ -399,7 +439,13 @@
 
             <!-- Resume Section -->
             <section id="resume" class="section">
-                <h2 class="section-heading">Resume</h2>
+                <div class="heading-wrapper">
+                    <h2 class="resume-heading">
+                        <a href="src/assets/ArnavKhare-Resume[2025].pdf" target="_blank">Resume</a>
+                    </h2>
+                    <span class="click-me-prompt">click me</span>
+                </div>
+                <div class="underline"></div>
                 <div class="section-content">
                     <div class="resume-item">
                         <div class="resume-icon-box">
