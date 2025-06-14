@@ -234,36 +234,38 @@
             margin-top: 1.5rem;
         }
 
-        .portfolio-card {
+        .project-card {
             background-color: #FFFFFF; /* Portfolio Cards - White background */
             border-radius: 12px;
             padding: 1.5rem;
             transition: all 0.3s ease;
             border: 2px solid #E9ECEF; /* Subtle 2px solid border in light neutral gray */
+            cursor: pointer;
         }
 
-        .portfolio-card:hover {
+        .project-card:hover {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
             border-color: #638872; /* Gray border changes to Russian Green on hover */
         }
 
-        .portfolio-image {
+        .project-card img {
             width: 100%;
             height: 200px;
             border-radius: 8px;
             object-fit: cover;
             margin-bottom: 1rem;
             background-color: #F1F3F5; /* Light gray placeholder */
+            display: block;
         }
 
-        .portfolio-title {
+        .project-card h3 {
             font-size: 1.2rem;
             font-weight: bold;
             color: #638872; /* All Headings - Rich Russian Green */
             margin-bottom: 0.5rem;
         }
 
-        .portfolio-description {
+        .project-card p {
             color: #30253E; /* Primary Text Color - Dark Purple */
             font-size: 0.9rem;
             line-height: 1.5;
@@ -629,27 +631,12 @@
 
             <!-- Portfolio Section -->
             <section id="portfolio" class="section">
-                <h2 class="section-heading">Portfolio</h2>
+                <h2 class="section-heading">Projects</h2>
                 <div class="portfolio-grid">
-                    <div class="portfolio-card">
-                        <img src="src/assets/data-project.png" alt="Data Analytics Dashboard" class="portfolio-image">
-                        <h3 class="portfolio-title">End-to-End Data Analytics Showcase</h3>
-                        <p class="portfolio-description">A comprehensive analysis involving data extraction, cleaning, and visualization using Python (Pandas, Matplotlib) and Power BI. The project focuses on creating a managerial dashboard to drive business decisions.</p>
-                    </div>
-                    <div class="portfolio-card">
-                        <img src="src/assets/consulting-project.png" alt="Business Strategy" class="portfolio-image">
-                        <h3 class="portfolio-title">Business Consulting Case Study</h3>
-                        <p class="portfolio-description">Applying structured problem-solving frameworks to analyze a market gap, identify key performance indicators (KPIs), and present a data-driven growth strategy.</p>
-                    </div>
-                    <div class="portfolio-card">
-                        <img src="src/assets/pm-project.png" alt="Product Management" class="portfolio-image">
-                        <h3 class="portfolio-title">Product Management: From Ideation to Analysis</h3>
-                        <p class="portfolio-description">Showcasing the full product lifecycle through two conceptual projects, 'Habit Horizon' and 'RetroVerse'. This includes market research, feature ideation, and post-launch analysis strategy.</p>
-                    </div>
-                    <div class="portfolio-card" id="habit-horizon-card">
-                        <img src="/HabitHorizon-thumbnail.jpg" alt="Habit Horizon App" class="portfolio-image">
-                        <h3 class="portfolio-title">Habit Horizon App</h3>
-                        <p class="portfolio-description">A product case study on building a habit-tracking app. Click to see the details.</p>
+                    <div class="project-card" id="habit-horizon-card">
+                        <img src="/HabitHorizon-thumbnail.jpg" alt="Habit Horizon App Thumbnail">
+                        <h3>Habit Horizon App</h3>
+                        <p>A product case study on building a habit-tracking app. Click to see the details.</p>
                     </div>
                 </div>
             </section>
