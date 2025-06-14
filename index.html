@@ -418,6 +418,71 @@
             .section-heading, h2 { font-size: 2rem; }
             .left-panel h1, .sidebar-name { font-size: 1.8rem; }
         }
+
+        /* Modal Styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001; /* Sit on top of everything */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6); /* Semi-transparent black overlay */
+            align-items: center; /* Vertically center */
+            justify-content: center; /* Horizontally center */
+        }
+        .modal-content {
+            background-color: #FFFFFF;
+            margin: auto;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+        }
+        .close-modal {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover { color: #000; }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+            margin-top: 1rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .button-link {
+            display: inline-block;
+            background-color: #C3C88C; /* Primary Button / Call to Action - Vibrant Sage green */
+            color: #30253E; /* Text color - Dark purple */
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 1rem 0;
+            transition: background-color 0.3s ease;
+        }
+        .button-link:hover {
+            background-color: #638872; /* Russian Green on hover */
+        }
     </style>
 </head>
 <body>
@@ -581,6 +646,11 @@
                         <h3 class="portfolio-title">Product Management: From Ideation to Analysis</h3>
                         <p class="portfolio-description">Showcasing the full product lifecycle through two conceptual projects, 'Habit Horizon' and 'RetroVerse'. This includes market research, feature ideation, and post-launch analysis strategy.</p>
                     </div>
+                    <div class="portfolio-card" id="habit-horizon-card">
+                        <img src="/HabitHorizon-thumbnail.jpg" alt="Habit Horizon App" class="portfolio-image">
+                        <h3 class="portfolio-title">Habit Horizon App</h3>
+                        <p class="portfolio-description">A product case study on building a habit-tracking app. Click to see the details.</p>
+                    </div>
                 </div>
             </section>
 
@@ -608,5 +678,42 @@
             </section>
         </div>
     </div>
+
+    <!-- The Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>Habit Horizon: Case Study</h2>
+            <hr>
+            <p>Below you will find the link to the detailed product breakdown and a live demo of the user interface.</p>
+            <a href="/HabitHorizon-Case-Study.pdf" class="button-link" target="_blank">View Full Case Study (PDF)</a>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/3bvABpi-g4M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("project-modal");
+        const habitCard = document.getElementById("habit-horizon-card");
+        const closeModalBtn = document.querySelector(".close-modal");
+
+        // When the user clicks on the project card, open the modal
+        habitCard.onclick = function() {
+            modal.style.display = "flex";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeModalBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
