@@ -485,6 +485,7 @@
         .button-link:hover {
             background-color: #638872; /* Russian Green on hover */
         }
+<<<<<<< HEAD
         
         /* --- NEW CSS FOR TABBED INTERFACE --- */
         .content-section {
@@ -494,6 +495,8 @@
         .content-section.active {
             display: block; /* ONLY show the section that has the 'active' class */
         }
+=======
+>>>>>>> 42a108206d654d3ea46ecdcac5355596b3fdc1bc
     </style>
 </head>
 <body>
@@ -639,7 +642,11 @@
             </section>
 
             <!-- Portfolio Section -->
+<<<<<<< HEAD
             <section id="portfolio" class="content-section">
+=======
+            <section id="portfolio" class="section">
+>>>>>>> 42a108206d654d3ea46ecdcac5355596b3fdc1bc
                 <h2 class="section-heading">Projects</h2>
                 <div class="portfolio-grid">
                     <div class="project-card" id="habit-horizon-card">
@@ -690,12 +697,16 @@
     </div>
 
     <script>
+<<<<<<< HEAD
         // SCRIPT FOR PROJECT MODAL
+=======
+>>>>>>> 42a108206d654d3ea46ecdcac5355596b3fdc1bc
         const modal = document.getElementById("project-modal");
         const habitCard = document.getElementById("habit-horizon-card");
         const closeModalBtn = document.querySelector(".close-modal");
 
         // When the user clicks on the project card, open the modal
+<<<<<<< HEAD
         if (habitCard) {
             habitCard.onclick = function() {
                 modal.style.display = "flex";
@@ -707,6 +718,15 @@
             closeModalBtn.onclick = function() {
                 modal.style.display = "none";
             }
+=======
+        habitCard.onclick = function() {
+            modal.style.display = "flex";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        closeModalBtn.onclick = function() {
+            modal.style.display = "none";
+>>>>>>> 42a108206d654d3ea46ecdcac5355596b3fdc1bc
         }
 
         // When the user clicks anywhere outside of the modal, close it
@@ -716,6 +736,7 @@
             }
         }
     </script>
+<<<<<<< HEAD
     
     <!-- NEW SCRIPT FOR TABBED INTERFACE -->
     <script>
@@ -749,5 +770,7 @@
             });
         });
     </script>
+=======
+>>>>>>> 42a108206d654d3ea46ecdcac5355596b3fdc1bc
 </body>
 </html>
