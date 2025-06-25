@@ -31,7 +31,7 @@
             grid-template-columns: 300px 1fr;
             gap: 4rem;
             padding: 2rem 0;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             overflow: hidden;
         }
@@ -48,10 +48,16 @@
         }
         .right-panel {
             grid-column: 2;
-            overflow-y: scroll; /* Prevents layout shift */
+            overflow-y: scroll;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .right-panel::-webkit-scrollbar {
+            display: none;
         }
 
-        /* --- CONTENT & TYPOGRAPHY --- */
+
+        /* --- LEFT PANEL & NAVIGATION --- */
         .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; }
         .profile-name { font-size: 1.6rem; font-weight: bold; color: #638872; margin-bottom: 0.5rem; }
         .profile-title { color: #30253E; margin-bottom: 2rem; font-size: 0.9rem; }
@@ -60,31 +66,58 @@
         .icon-box { width: 32px; height: 32px; border-radius: 8px; background-color: #F1F3F5; display: flex; align-items: center; justify-content: center; margin-right: 1rem; }
         .icon-box i { color: #638872; }
         .social-links { margin-top: auto; padding-top: 1.5rem; }
-        .social-links a { color: #80B9B1; font-size: 1.5rem; margin: 0 0.75rem; text-decoration: none; transition: color 0.3s ease; }
-        .social-links a:hover { color: #638872; }
-        
+        .social-links a { 
+            color: #80B9B1; 
+            font-size: 1.5rem; 
+            margin: 0 0.75rem; 
+            text-decoration: none; 
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover { 
+            color: #638872;
+            transform: scale(1.15);
+        }
         .navigation { display: flex; justify-content: center; gap: 2rem; padding: 1rem 0; }
         .nav-link { color: #80B9B1; text-decoration: none; font-weight: 400; transition: all 0.3s ease; cursor: pointer; }
         .nav-link.active, .nav-link:hover { color: #638872; font-weight: 600; }
         
+
+        /* --- CONTENT SECTIONS --- */
         .content-section {
-            display: none; /* Fixes flash of unstyled content */
+            display: none;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
             padding: 2rem;
             margin-right: 1rem;
             background-color: #FFFFFF;
-            border-radius: 12px;
-            border: 2px solid #E9ECEF;
         }
         .content-section.active { display: block; opacity: 1; }
-
         .heading-wrapper { display: flex; align-items: baseline; margin-bottom: 0.5rem; }
         .section-heading { font-size: 2.5rem; font-weight: bold; color: #638872; }
         .underline { width: 80px; height: 4px; background: #638872; margin-bottom: 2rem; border-radius: 2px; }
-        
         .about-intro { font-size: 1.1rem; line-height: 1.6; color: #30253E; margin-bottom: 2.5rem; }
-        .sub-heading { font-size: 1.8rem; font-weight: bold; color: #638872; margin-bottom: 1.5rem; }
+        .sub-heading { font-size: 1.8rem; font-weight: bold; color: #638872; margin: 2.5rem 0 1.5rem 0; }
+
+        /* --- NEW: RESUME LINK STYLING --- */
+        .resume-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: baseline;
+        }
+        .resume-prompt {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.5;
+            margin-left: -0.4rem;
+            transition: opacity 0.3s ease;
+        }
+        .resume-link:hover .resume-prompt {
+            opacity: 1;
+        }
+
+
+        /* --- SKILLS & TECH STACK --- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -95,43 +128,128 @@
             border: 2px solid #E9ECEF;
             border-radius: 12px;
             padding: 1.5rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         }
         .skill-card:hover {
+            transform: translateY(-5px);
             border-color: #C3C88C;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         .skill-card .icon { font-size: 1.5rem; color: #638872; margin-bottom: 1rem; }
         .skill-card h4 { font-size: 1.2rem; font-weight: 600; color: #30253E; margin-bottom: 0.5rem; }
         .skill-card p { font-size: 0.9rem; line-height: 1.5; color: #495057; }
-        
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .project-card { background-color: #FFFFFF; border-radius: 12px; padding: 1.5rem; transition: all 0.3s ease; border: 2px solid #E9ECEF; }
-        .project-card:hover { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); border-color: #638872; }
-        .project-card h3 { font-size: 1.2rem; font-weight: bold; color: #638872; margin-bottom: 0.5rem; }
-        .project-card p { color: #30253E; font-size: 0.9rem; line-height: 1.5; }
-        .project-card ul { margin-top: 1rem; padding-left: 1.2rem; color: #495057; }
+
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #495057;
+        }
+        .tech-item img, .tech-item i {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .tech-item:hover img, .tech-item:hover i {
+            transform: scale(1.1);
+        }
+        .tech-item i {
+            font-size: 40px;
+            color: #638872;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem; 
+        }
+        .project-card { 
+            background-color: #FFFFFF; 
+            border-radius: 12px; 
+            border: 2px solid #E9ECEF;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
+            border-color: #638872; 
+        }
+        .project-image-placeholder {
+            height: 150px;
+            background-color: #F1F3F5;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ADB5BD;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: -1.5rem -1.5rem 1rem -1.5rem;
+        }
+        .project-content {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .project-card h3 { 
+            font-size: 1.1rem;
+            font-weight: 600; 
+            color: #638872; 
+            margin-bottom: 0.5rem; 
+        }
+        .project-card ul { 
+            margin: 0.5rem 0; 
+            padding-left: 1rem; 
+            color: #495057; 
+            font-size: 0.85rem;
+            flex-grow: 1;
+        }
         .project-card li { margin-bottom: 0.5rem; }
-        .view-case-study { color: #638872; font-weight: 600; cursor: pointer; text-decoration: none; }
+        .view-case-study { 
+            color: #638872; 
+            font-weight: 600; 
+            cursor: pointer; 
+            text-decoration: none; 
+            margin-top: auto;
+        }
         .view-case-study:hover { text-decoration: underline; }
+        
+
+        /* --- ANIMATIONS --- */
+        .anim-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .anim-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- CONTACT & MODAL --- */
         .contact-form { margin-top: 1.5rem; }
         .form-group { margin-bottom: 1.5rem; }
         .form-group label { display: block; color: #30253E; font-weight: 500; margin-bottom: 0.5rem; }
         .form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid #E9ECEF; border-radius: 8px; font-family: inherit; font-size: 1rem; }
-        .submit-btn { background-color: #C3C88C; color: #30253E; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 500; cursor: pointer; }
-        
-        /* THIS IS THE CORRECTED RULE */
+        .submit-btn { background-color: #C3C88C; color: #30253E; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease; }
+        .submit-btn:hover { background-color: #b7bd7a; transform: translateY(-2px); }
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            align-items: center;
-            justify-content: center;
+            display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center;
         }
         .modal-content { background-color: #FFFFFF; margin: auto; padding: 2rem; border-radius: 10px; max-width: 800px; width: 90%; position: relative; }
         .close-modal { color: #aaa; position: absolute; top: 10px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; }
@@ -139,12 +257,17 @@
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .button-link { display: inline-block; background-color: #C3C88C; color: #30253E; text-decoration: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 500; margin: 1rem 0; }
 
+        @media (max-width: 1200px) {
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 992px) {
             body { display: block; height: auto; overflow-y: auto; padding: 0; }
             .container { display: block; width: 100%; padding: 0; gap: 0; }
             .left-panel, .right-panel { display: block; width: 100%; padding: 1.5rem; }
             .right-panel { overflow-y: visible; }
             .skills-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -159,74 +282,101 @@
 
     <div class="container">
         <div class="left-panel">
-            <img src="/profile-photo.jpg" alt="Arnav Khare" class="profile-img">
-            <h1 class="profile-name">Arnav Khare</h1>
-            <p class="profile-title">Data Analytics & Product Strategy</p>
-            <ul class="contact-list">
+            <img src="https://arnav-khare-portfolio.vercel.app/profile-photo.jpg" alt="Arnav Khare" class="profile-img anim-hidden">
+            <h1 class="profile-name anim-hidden">Arnav Khare</h1>
+            <p class="profile-title anim-hidden">Data Analytics & Product Strategy</p>
+            <ul class="contact-list anim-hidden">
                 <li><div class="icon-box"><i class="fas fa-envelope"></i></div><span>arnavkhareaps@gmail.com</span></li>
                 <li><div class="icon-box"><i class="fas fa-phone"></i></div><span>+91-8527035435</span></li>
                 <li><div class="icon-box"><i class="fas fa-university"></i></div><span>Netaji Subhas University of Technology</span></li>
             </ul>
-            <div class="social-links">
+            <!-- UPDATED: RESUME LINK REMOVED FROM HERE -->
+            <div class="social-links anim-hidden">
                 <a href="https://www.linkedin.com/in/arnav-khare-b0b956287/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="/ArnavKhare-Resume-2025.pdf" target="_blank" aria-label="Download Resume"><i class="fas fa-file-pdf"></i></a>
             </div>
         </div>
 
         <div class="right-panel">
             <!-- About Section -->
             <section id="about" class="content-section active">
-                <div class="heading-wrapper"><h2 class="section-heading">About Me</h2></div>
-                <div class="underline"></div>
-                <p class="about-intro">
+                <!-- UPDATED: HEADING IS NOW A CLICKABLE LINK -->
+                <div class="heading-wrapper anim-hidden">
+                    <a href="https://arnav-khare-portfolio.vercel.app/ArnavKhare-Resume-2025.pdf" target="_blank" class="resume-link">
+                        <h2 class="section-heading">
+                            About Me
+                            <span class="resume-prompt">(click me)</span>
+                        </h2>
+                    </a>
+                </div>
+                <div class="underline anim-hidden"></div>
+                <p class="about-intro anim-hidden">
                     I'm a final-year B.Tech student at Netaji Subhas University of Technology (NSUT), driven by the challenge of bridging the gap between technical possibilities and strategic business outcomes. My interests lie at the intersection of data analysis, product management, and market strategy. I am passionate about crafting impactful solutions—from building financial models to developing data-driven product roadmaps. I thrive in fast-paced, collaborative environments and love turning complex ideas into functional, user-friendly products.
                 </p>
-                <h3 class="sub-heading">What I Do</h3>
+                <h3 class="sub-heading anim-hidden">What I Do</h3>
                 <div class="skills-grid">
-                    <div class="skill-card"><div class="icon"><i class="fas fa-chart-line"></i></div><h4>Data Analytics & Strategy</h4><p>Building comprehensive financial models, performing TCO analysis, and synthesizing data to identify key market opportunities and define performance targets.</p></div>
-                    <div class="skill-card"><div class="icon"><i class="fas fa-lightbulb"></i></div><h4>Product Management</h4><p>Conducting user research to identify market gaps, authoring Product Requirement Documents (PRDs), and developing GTM strategies with data-driven roadmaps.</p></div>
-                    <div class="skill-card"><div class="icon"><i class="fas fa-brain"></i></div><h4>Predictive Modeling</h4><p>Architecting end-to-end predictive models using SQL and Python to forecast churn, identify key drivers, and inform targeted retention campaigns.</p></div>
-                    <div class="skill-card"><div class="icon"><i class="fas fa-users"></i></div><h4>Leadership & Execution</h4><p>Leading cross-functional teams, managing large-scale events and prize pools, and directing digital content strategies to engage wide audiences.</p></div>
+                    <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-chart-line"></i></div><h4>Data Analytics & Strategy</h4><p>Building comprehensive financial models, performing TCO analysis, and synthesizing data to identify key market opportunities and define performance targets.</p></div>
+                    <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-lightbulb"></i></div><h4>Product Management</h4><p>Conducting user research to identify market gaps, authoring Product Requirement Documents (PRDs), and developing GTM strategies with data-driven roadmaps.</p></div>
+                    <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-brain"></i></div><h4>Predictive Modeling</h4><p>Architecting end-to-end predictive models using SQL and Python to forecast churn, identify key drivers, and inform targeted retention campaigns.</p></div>
+                    <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-users"></i></div><h4>Leadership & Execution</h4><p>Leading cross-functional teams, managing large-scale events and prize pools, and directing digital content strategies to engage wide audiences.</p></div>
+                </div>
+
+                <h3 class="sub-heading anim-hidden">Core Skills</h3>
+                <div class="tech-stack-grid anim-hidden">
+                    <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
+                    <div class="tech-item"><i class="fas fa-database"></i><span>SQL</span></div>
+                    <div class="tech-item"><img src="https://vectorwiki.com/images/Tableau_Software__logo-freelogovectors.net.png" alt="Tableau Logo"><span>Tableau</span></div>
+                    <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/1200px-Pandas_logo.svg.png" alt="Pandas Logo"><span>Pandas</span></div>
+                    <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                    <div class="tech-item"><i class="fas fa-file-excel"></i><span>Excel</span></div>
+                    <div class="tech-item"><i class="fab fa-figma"></i><span>Figma</span></div>
+                    <div class="tech-item"><i class="fab fa-html5"></i><span>HTML/CSS</span></div>
                 </div>
             </section>
 
             <!-- Projects Section -->
             <section id="projects" class="content-section">
-                <div class="heading-wrapper"><h2 class="section-heading">Projects</h2></div>
-                <div class="underline"></div>
+                <div class="heading-wrapper anim-hidden"><h2 class="section-heading">Projects</h2></div>
+                <div class="underline anim-hidden"></div>
                 <div class="portfolio-grid">
-                    <div class="project-card">
-                        <h3>Predictive Churn Analysis & Revenue Strategy</h3>
-                        <ul>
-                            <li>Architected an end-to-end predictive model for a SaaS dataset (100k+ subscribers) achieving 85% accuracy in churn forecasting.</li>
-                            <li>Identified key churn drivers using SQL and Python (Pandas) and presented findings via an interactive Tableau dashboard.</li>
-                            <li>Delivered a final business case projecting a $1.5M annual revenue retention with a focused campaign.</li>
-                        </ul>
+                    <div class="project-card anim-hidden">
+                        <div class="project-image-placeholder">Add Project Image Here</div>
+                        <div class="project-content">
+                            <h3>Predictive Churn Analysis</h3>
+                            <ul>
+                                <li>Architected a model with 85% accuracy for a SaaS dataset of 100k+ subscribers.</li>
+                                <li>Used SQL and Python to identify key churn drivers, visualized on a Tableau dashboard.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="project-card" id="habit-horizon-card">
-                        <h3>Product Strategy & Design: Habit Horizon</h3>
-                        <ul>
-                            <li>Identified a market gap for an "anti-habit tracker" via user research and authored a comprehensive Product Requirement Document (PRD).</li>
-                            <li>Defined the product's core value proposition, KPIs (including DAU), and developed a GTM strategy with a roadmap for future A/B testing.</li>
-                            <li><a class="view-case-study">View Case Study & Demo</a></li>
-                        </ul>
+                    <div class="project-card anim-hidden" id="habit-horizon-card">
+                        <div class="project-image-placeholder">Add Project Image Here</div>
+                        <div class="project-content">
+                            <h3>Product Strategy: Habit Horizon</h3>
+                            <ul>
+                                <li>Identified market gap via user research and authored a full Product Requirement Document (PRD).</li>
+                                <li>Defined core value proposition, KPIs, and GTM strategy.</li>
+                            </ul>
+                            <a class="view-case-study">View Case Study & Demo</a>
+                        </div>
                     </div>
-                    <div class="project-card">
-                        <h3>Strategic Case Study: Indian EV Sector</h3>
-                        <ul>
-                            <li>Developed a 5-year strategic roadmap for an automotive OEM to capture market share in India's $12B+ passenger EV market.</li>
-                            <li>Analyzed market trends and policy to identify a "premium SUV" entry niche.</li>
-                            <li>Formulated a recommendation for a targeted product portfolio and TCO-based marketing.</li>
-                        </ul>
+                    <div class="project-card anim-hidden">
+                        <div class="project-image-placeholder">Add Project Image Here</div>
+                        <div class="project-content">
+                            <h3>Strategic Case Study: EV Sector</h3>
+                            <ul>
+                                <li>Developed a 5-year strategic roadmap to capture market share in India's $12B+ EV market.</li>
+                                <li>Formulated a recommendation for a targeted product portfolio and TCO-based marketing.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Contact Section -->
             <section id="contact" class="content-section">
-                <div class="heading-wrapper"><h2 class="section-heading">Contact</h2></div>
-                <div class="underline"></div>
-                <div class="section-content">
+                <div class="heading-wrapper anim-hidden"><h2 class="section-heading">Contact</h2></div>
+                <div class="underline anim-hidden"></div>
+                <div class="section-content anim-hidden">
                     <p>I'm always interested in connecting with professionals in data analytics, product management, and business strategy. Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
                     <form class="contact-form" action="#" method="POST">
                         <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
@@ -254,55 +404,66 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation and Tab Logic ---
             const navLinks = document.querySelectorAll('.navigation .nav-link');
             const contentSections = document.querySelectorAll('.content-section');
-            const modal = document.getElementById("project-modal");
-            const habitCard = document.getElementById("habit-horizon-card");
-            const closeModalBtn = document.querySelector(".close-modal");
     
             function showTab(tabId) {
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                });
-                
+                contentSections.forEach(section => section.classList.remove('active'));
+                navLinks.forEach(link => link.classList.remove('active'));
                 const targetSection = document.querySelector(tabId);
                 if (targetSection) targetSection.classList.add('active');
-                
                 const targetLink = document.querySelector(`a.nav-link[href="${tabId}"]`);
                 if (targetLink) targetLink.classList.add('active');
             }
     
             navLinks.forEach(link => {
-                link.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    showTab(link.getAttribute('href'));
-                });
+                // We check if the link is for the resume to avoid preventing default behavior
+                const isResumeLink = link.getAttribute('href') === 'https://arnav-khare-portfolio.vercel.app/ArnavKhare-Resume-2025.pdf';
+                if (!isResumeLink) {
+                    link.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        showTab(link.getAttribute('href'));
+                    });
+                }
             });
     
+            // --- Modal Logic ---
+            const modal = document.getElementById("project-modal");
+            const habitCard = document.getElementById("habit-horizon-card");
+            const closeModalBtn = document.querySelector(".close-modal");
+
             if (habitCard) {
                 const caseStudyLink = habitCard.querySelector('.view-case-study');
-                caseStudyLink.onclick = () => { modal.style.display = "flex"; };
-            }
-            if (closeModalBtn) {
-                closeModalBtn.onclick = () => { modal.style.display = "none"; };
-            }
-            window.onclick = (event) => {
-                if (event.target == modal) {
-                    modal.style.display = "none";
+                if (caseStudyLink) {
+                    caseStudyLink.onclick = () => { modal.style.display = "flex"; };
                 }
+            }
+            if (closeModalBtn) closeModalBtn.onclick = () => { modal.style.display = "none"; };
+            window.onclick = (event) => {
+                if (event.target == modal) modal.style.display = "none";
             };
-    
+
+            // --- Initial Tab Display Logic ---
             const initialTabId = window.location.hash;
             const validTabIds = ['#about', '#projects', '#contact'];
-    
             if (initialTabId && validTabIds.includes(initialTabId)) {
                 showTab(initialTabId);
             } else {
                 showTab('#about');
             }
+
+            // --- Scroll Animation Logic ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('anim-show');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const hiddenElements = document.querySelectorAll('.anim-hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
         });
     </script>
 </body>
