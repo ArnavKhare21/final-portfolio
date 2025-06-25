@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arnav Khare - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -60,7 +61,15 @@
         /* --- LEFT PANEL & NAVIGATION --- */
         .profile-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1.5rem; }
         .profile-name { font-size: 1.6rem; font-weight: bold; color: #638872; margin-bottom: 0.5rem; }
-        .profile-title { color: #30253E; margin-bottom: 2rem; font-size: 0.9rem; }
+        
+        .profile-title { 
+            color: #30253E; 
+            margin-bottom: 2rem; 
+            font-size: 1rem; 
+            min-height: 2.5em;
+            font-weight: 500;
+        }
+        
         .contact-list { list-style: none; padding: 0; margin-bottom: 2rem; width: 100%; }
         .contact-list li { display: flex; align-items: center; margin-bottom: 1rem; color: #30253E; font-size: 0.85rem; }
         .icon-box { width: 32px; height: 32px; border-radius: 8px; background-color: #F1F3F5; display: flex; align-items: center; justify-content: center; margin-right: 1rem; }
@@ -98,7 +107,6 @@
         .about-intro { font-size: 1.1rem; line-height: 1.6; color: #30253E; margin-bottom: 2.5rem; }
         .sub-heading { font-size: 1.8rem; font-weight: bold; color: #638872; margin: 2.5rem 0 1.5rem 0; }
 
-        /* --- NEW: RESUME LINK STYLING --- */
         .resume-link {
             text-decoration: none;
             color: inherit;
@@ -109,7 +117,7 @@
             font-size: 0.9rem;
             font-weight: 400;
             opacity: 0.5;
-            margin-left: -0.4rem;
+            margin-left: 0.5rem;
             transition: opacity 0.3s ease;
         }
         .resume-link:hover .resume-prompt {
@@ -159,14 +167,16 @@
             height: 48px;
             object-fit: contain;
             transition: transform 0.3s ease;
-        }
-        .tech-item:hover img, .tech-item:hover i {
-            transform: scale(1.1);
+            /* Filter removed to restore original colors */
         }
         .tech-item i {
             font-size: 40px;
             color: #638872;
         }
+        .tech-item:hover img, .tech-item:hover i {
+            transform: scale(1.1);
+        }
+        
 
         /* --- PROJECTS SECTION --- */
         .portfolio-grid { 
@@ -187,17 +197,13 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
             border-color: #638872; 
         }
-        .project-image-placeholder {
+        .project-image {
             height: 150px;
-            background-color: #F1F3F5;
+            width: 100%;
+            object-fit: cover;
             border-radius: 10px 10px 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ADB5BD;
-            font-size: 1rem;
-            font-weight: 500;
             margin: -1.5rem -1.5rem 1rem -1.5rem;
+            border-bottom: 2px solid #E9ECEF;
         }
         .project-content {
             padding: 0 1.5rem 1.5rem 1.5rem;
@@ -216,15 +222,30 @@
             padding-left: 1rem; 
             color: #495057; 
             font-size: 0.85rem;
-            flex-grow: 1;
         }
         .project-card li { margin-bottom: 0.5rem; }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+            padding-top: 1rem;
+        }
+        .tag {
+            background-color: #e9ecef;
+            color: #495057;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+        }
         .view-case-study { 
             color: #638872; 
             font-weight: 600; 
             cursor: pointer; 
             text-decoration: none; 
-            margin-top: auto;
+            margin-top: 1rem;
         }
         .view-case-study:hover { text-decoration: underline; }
         
@@ -239,6 +260,15 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .typed-cursor {
+            opacity: 1;
+            animation: typedjsBlink 0.7s infinite;
+            vertical-align: middle;
+        }
+        @keyframes typedjsBlink {
+            50% { opacity: 0.0; }
+        }
+
 
         /* --- CONTACT & MODAL --- */
         .contact-form { margin-top: 1.5rem; }
@@ -284,13 +314,12 @@
         <div class="left-panel">
             <img src="https://arnav-khare-portfolio.vercel.app/profile-photo.jpg" alt="Arnav Khare" class="profile-img anim-hidden">
             <h1 class="profile-name anim-hidden">Arnav Khare</h1>
-            <p class="profile-title anim-hidden">Data Analytics & Product Strategy</p>
+            <div id="typed-title-container" class="profile-title anim-hidden"><span id="typed-title"></span></div>
             <ul class="contact-list anim-hidden">
                 <li><div class="icon-box"><i class="fas fa-envelope"></i></div><span>arnavkhareaps@gmail.com</span></li>
                 <li><div class="icon-box"><i class="fas fa-phone"></i></div><span>+91-8527035435</span></li>
                 <li><div class="icon-box"><i class="fas fa-university"></i></div><span>Netaji Subhas University of Technology</span></li>
             </ul>
-            <!-- UPDATED: RESUME LINK REMOVED FROM HERE -->
             <div class="social-links anim-hidden">
                 <a href="https://www.linkedin.com/in/arnav-khare-b0b956287/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
@@ -299,37 +328,35 @@
         <div class="right-panel">
             <!-- About Section -->
             <section id="about" class="content-section active">
-                <!-- UPDATED: HEADING IS NOW A CLICKABLE LINK -->
                 <div class="heading-wrapper anim-hidden">
                     <a href="https://arnav-khare-portfolio.vercel.app/ArnavKhare-Resume-2025.pdf" target="_blank" class="resume-link">
                         <h2 class="section-heading">
                             About Me
-                            <span class="resume-prompt">(click me)</span>
+                            <span class="resume-prompt">(click for resume)</span>
                         </h2>
                     </a>
                 </div>
                 <div class="underline anim-hidden"></div>
                 <p class="about-intro anim-hidden">
-                    I'm a final-year B.Tech student at Netaji Subhas University of Technology (NSUT), driven by the challenge of bridging the gap between technical possibilities and strategic business outcomes. My interests lie at the intersection of data analysis, product management, and market strategy. I am passionate about crafting impactful solutions—from building financial models to developing data-driven product roadmaps. I thrive in fast-paced, collaborative environments and love turning complex ideas into functional, user-friendly products.
+                    As a final-year B.Tech student at Netaji Subhas University of Technology, I thrive at the intersection of data analytics, product strategy, and management consulting. My experience, from building financial models in Excel to collaborating with BCG consultants on Power BI dashboards, is centered on a single goal: translating complex data into actionable business strategy. Whether it's architecting a predictive churn model in Python to save $1.5M in revenue or authoring a go-to-market strategy for a new app, I am passionate about owning problems end-to-end—from initial analysis to final recommendation. I am driven to build products and strategies that are not just technically sound, but commercially impactful.
                 </p>
                 <h3 class="sub-heading anim-hidden">What I Do</h3>
                 <div class="skills-grid">
                     <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-chart-line"></i></div><h4>Data Analytics & Strategy</h4><p>Building comprehensive financial models, performing TCO analysis, and synthesizing data to identify key market opportunities and define performance targets.</p></div>
                     <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-lightbulb"></i></div><h4>Product Management</h4><p>Conducting user research to identify market gaps, authoring Product Requirement Documents (PRDs), and developing GTM strategies with data-driven roadmaps.</p></div>
-                    <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-brain"></i></div><h4>Predictive Modeling</h4><p>Architecting end-to-end predictive models using SQL and Python to forecast churn, identify key drivers, and inform targeted retention campaigns.</p></div>
+                    <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-sitemap"></i></div><h4>Management & Consulting</h4><p>Synthesizing quantitative and qualitative data to drive go/no-go investment decisions and develop strategic roadmaps for market entry and growth.</p></div>
                     <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-users"></i></div><h4>Leadership & Execution</h4><p>Leading cross-functional teams, managing large-scale events and prize pools, and directing digital content strategies to engage wide audiences.</p></div>
                 </div>
 
-                <h3 class="sub-heading anim-hidden">Core Skills</h3>
+                <h3 class="sub-heading anim-hidden">My Tech Stack</h3>
                 <div class="tech-stack-grid anim-hidden">
                     <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
                     <div class="tech-item"><i class="fas fa-database"></i><span>SQL</span></div>
-                    <div class="tech-item"><img src="https://vectorwiki.com/images/Tableau_Software__logo-freelogovectors.net.png" alt="Tableau Logo"><span>Tableau</span></div>
+                    <!-- UPDATED LOGO LINKS -->
+                    <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/New_Power_BI_Logo.svg/1024px-New_Power_BI_Logo.svg.png" alt="Power BI Logo"></div>
+                    <div class="tech-item"><img src="https://i.imgur.com/k2x4J2E.png" alt="Tableau Logo"><span>Tableau</span></div>
+                    <div class="tech-item"><i class="fas fa-file-excel"></i><span>MS Excel</span></div>
                     <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pandas_logo.svg/1200px-Pandas_logo.svg.png" alt="Pandas Logo"><span>Pandas</span></div>
-                    <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
-                    <div class="tech-item"><i class="fas fa-file-excel"></i><span>Excel</span></div>
-                    <div class="tech-item"><i class="fab fa-figma"></i><span>Figma</span></div>
-                    <div class="tech-item"><i class="fab fa-html5"></i><span>HTML/CSS</span></div>
                 </div>
             </section>
 
@@ -339,34 +366,48 @@
                 <div class="underline anim-hidden"></div>
                 <div class="portfolio-grid">
                     <div class="project-card anim-hidden">
-                        <div class="project-image-placeholder">Add Project Image Here</div>
+                        <img src="https://i.imgur.com/G2abWqu.png" alt="Churn Analysis Dashboard" class="project-image">
                         <div class="project-content">
                             <h3>Predictive Churn Analysis</h3>
                             <ul>
                                 <li>Architected a model with 85% accuracy for a SaaS dataset of 100k+ subscribers.</li>
                                 <li>Used SQL and Python to identify key churn drivers, visualized on a Tableau dashboard.</li>
                             </ul>
+                            <div class="project-tags">
+                                <span class="tag">SQL</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Tableau</span>
+                            </div>
                         </div>
                     </div>
                     <div class="project-card anim-hidden" id="habit-horizon-card">
-                        <div class="project-image-placeholder">Add Project Image Here</div>
+                        <img src="https://i.imgur.com/8Qp1x3f.png" alt="Habit Horizon UI" class="project-image">
                         <div class="project-content">
                             <h3>Product Strategy: Habit Horizon</h3>
                             <ul>
                                 <li>Identified market gap via user research and authored a full Product Requirement Document (PRD).</li>
                                 <li>Defined core value proposition, KPIs, and GTM strategy.</li>
                             </ul>
+                            <div class="project-tags">
+                                <span class="tag">Product Management</span>
+                                <span class="tag">Figma</span>
+                                <span class="tag">User Research</span>
+                            </div>
                             <a class="view-case-study">View Case Study & Demo</a>
                         </div>
                     </div>
                     <div class="project-card anim-hidden">
-                        <div class="project-image-placeholder">Add Project Image Here</div>
+                        <img src="https://i.imgur.com/tYtq1oM.png" alt="EV Market Chart" class="project-image">
                         <div class="project-content">
                             <h3>Strategic Case Study: EV Sector</h3>
                             <ul>
                                 <li>Developed a 5-year strategic roadmap to capture market share in India's $12B+ EV market.</li>
                                 <li>Formulated a recommendation for a targeted product portfolio and TCO-based marketing.</li>
                             </ul>
+                            <div class="project-tags">
+                                <span class="tag">Business Strategy</span>
+                                <span class="tag">Market Analysis</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -418,8 +459,7 @@
             }
     
             navLinks.forEach(link => {
-                // We check if the link is for the resume to avoid preventing default behavior
-                const isResumeLink = link.getAttribute('href') === 'https://arnav-khare-portfolio.vercel.app/ArnavKhare-Resume-2025.pdf';
+                const isResumeLink = link.classList.contains('resume-link');
                 if (!isResumeLink) {
                     link.addEventListener('click', (event) => {
                         event.preventDefault();
@@ -458,12 +498,24 @@
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('anim-show');
+                    } else {
+                        entry.target.classList.remove('anim-show');
                     }
                 });
             }, { threshold: 0.1 });
 
             const hiddenElements = document.querySelectorAll('.anim-hidden');
             hiddenElements.forEach((el) => observer.observe(el));
+
+            // --- Typed.js Animation ---
+            const typed = new Typed('#typed-title', {
+                strings: ['Data Analytics', 'Product Strategy', 'Management Consulting', 'Business Strategy'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 1500,
+                loop: true,
+                smartBackspace: true
+            });
         });
     </script>
 </body>
