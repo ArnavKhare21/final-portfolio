@@ -69,6 +69,12 @@
             min-height: 2.5em;
             font-weight: 500;
         }
+        /* Add this new rule anywhere in your CSS */
+        .project-card-link {
+            text-decoration: none; /* Removes the underline */
+            color: inherit;       /* Makes text inside inherit its color */
+            display: block;       /* Ensures it behaves like a block element */
+        }        
         
         .contact-list { list-style: none; padding: 0; margin-bottom: 2rem; width: 100%; }
         .contact-list li { display: flex; align-items: center; margin-bottom: 1rem; color: #30253E; font-size: 0.85rem; }
@@ -207,7 +213,8 @@
         .project-card:hover { 
             transform: translateY(-8px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
-            border-color: #9177d1; 
+            border-color: #9177d1;
+            cursor: pointer; /* <-- ADD THIS LINE */
         }
         .project-image {
             height: 150px;
@@ -236,13 +243,12 @@
             font-size: 0.85rem;
         }
         .project-card li { margin-bottom: 0.5rem; }
-        
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: auto;
-            padding-top: 1rem;
+            margin-top: auto;   /* <-- CHANGE THIS BACK TO 'auto' */
+            padding-top: 1rem;  /* Add some padding for spacing */
         }
         .tag {
             background-color: #e9ecef;
@@ -445,22 +451,25 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-card anim-hidden" id="habit-horizon-card">
-                        <img src="images/project-habit horizon.png" alt="A dashboard showing predictive churn analysis" class="project-image">
-                        <div class="project-content">
-                            <h3>Product Strategy: Habit Horizon</h3>
-                            <ul>
-                                <li>Identified market gap via user research and authored a full Product Requirement Document (PRD).</li>
-                                <li>Defined core value proposition, KPIs, and GTM strategy.</li>
-                            </ul>
-                            <div class="project-tags">
-                                <span class="tag">Product Management</span>
-                                <span class="tag">Figma</span>
-                                <span class="tag">User Research</span>
+                    <!-- Wrap the entire card in an <a> tag -->
+                    <a href="#" id="habit-horizon-card" class="project-card-link">
+                        <div class="project-card anim-hidden">
+                            <img src="images/project-habit horizon.png" alt="Habit Horizon UI" class="project-image">
+                            <div class="project-content">
+                                <h3>Product Strategy: Habit Horizon</h3>
+                                <ul>
+                                    <li>Identified market gap via user research and authored a full Product Requirement Document (PRD).</li>
+                                    <li>Defined core value proposition, KPIs, and GTM strategy.</li>
+                                </ul>
+                                <!-- NOTE: The "View Case Study" link is now GONE -->
+                                <div class="project-tags">
+                                    <span class="tag">Product Management</span>
+                                    <span class="tag">Figma</span>
+                                    <span class="tag">User Research</span>
+                                </div>
                             </div>
-                            <a class="view-case-study">View Case Study & Demo</a>
                         </div>
-                    </div>
+                    </a>
                     <div class="project-card anim-hidden">
                         <img src="images/project-consulting.png" alt="A dashboard showing predictive churn analysis" class="project-image">
                         <div class="project-content">
@@ -501,7 +510,7 @@
             <span class="close-modal">×</span>
             <h2>Habit Horizon: Case Study</h2><hr style="margin: 1rem 0;">
             <p>Below you will find the link to the detailed product breakdown and a live demo of the user interface.</p>
-            <a href="/HabitHorizon-Case-Study.pdf" class="button-link" target="_blank">View Full Case Study (PDF)</a>
+            <a href="https://arnav-khare-portfolio.vercel.app/HabitHorizon-Case-Study.pdf" class="button-link" target="_blank">View Full Case Study (PDF)</a>
             <div class="video-container">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/YOUR_NEW_VIDEO_ID_HERE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -535,28 +544,25 @@
     
             // --- Modal Logic ---
             const modal = document.getElementById("project-modal");
-            const habitCard = document.getElementById("habit-horizon-card");
+            const habitCard = document.getElementById("habit-horizon-card"); // This now correctly gets the <a> tag
             const closeModalBtn = document.querySelector(".close-modal");
 
+            // NEW, CORRECTED LISTENER:
             if (habitCard) {
-                const caseStudyLink = habitCard.querySelector('.view-case-study');
-                if (caseStudyLink) {
-                    caseStudyLink.onclick = () => { modal.style.display = "flex"; };
-                }
+                habitCard.addEventListener('click', function(event) {
+                    // 1. Prevent the link from jumping the page to the top
+                    event.preventDefault(); 
+                    
+                    // 2. Show the modal
+                    modal.style.display = "flex"; 
+                });
             }
+
+            // This part remains the same
             if (closeModalBtn) closeModalBtn.onclick = () => { modal.style.display = "none"; };
             window.onclick = (event) => {
                 if (event.target == modal) modal.style.display = "none";
             };
-
-            // --- Initial Tab Display Logic ---
-            const initialTabId = window.location.hash;
-            const validTabIds = ['#about', '#projects', '#contact'];
-            if (initialTabId && validTabIds.includes(initialTabId)) {
-                showTab(initialTabId);
-            } else {
-                showTab('#about');
-            }
 
             // --- Scroll Animation Logic ---
             const observer = new IntersectionObserver((entries) => {
