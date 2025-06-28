@@ -72,6 +72,18 @@
         
         .contact-list { list-style: none; padding: 0; margin-bottom: 2rem; width: 100%; }
         .contact-list li { display: flex; align-items: center; margin-bottom: 1rem; color: #30253E; font-size: 0.85rem; }
+        /* NEW: Added styles for the new hyperlinks */
+        .contact-list li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none; /* Removes underline */
+            color: inherit; /* Uses the parent's text color */
+            transition: color 0.3s ease;
+        }
+        /* NEW: Added a hover effect for the link */
+        .contact-list li a:hover {
+            color: #9177d1; /* Main purple color on hover */
+        }
         .icon-box { width: 32px; height: 32px; border-radius: 8px; background-color: #F1F3F5; display: flex; align-items: center; justify-content: center; margin-right: 1rem; }
         .icon-box i { color: #9177d1; }
         .social-links { margin-top: auto; padding-top: 1.5rem; }
@@ -315,9 +327,24 @@
             <h1 class="profile-name anim-hidden">Arnav Khare</h1>
             <div id="typed-title-container" class="profile-title anim-hidden"><span id="typed-title"></span></div>
             <ul class="contact-list anim-hidden">
-                <li><div class="icon-box"><i class="fas fa-envelope"></i></div><span>arnavkhareaps@gmail.com</span></li>
-                <li><div class="icon-box"><i class="fas fa-phone"></i></div><span>+91-8527035435</span></li>
-                <li><div class="icon-box"><i class="fas fa-university"></i></div><span>Netaji Subhas University of Technology</span></li>
+                <li>
+                    <a href="mailto:arnavkhareaps@gmail.com">
+                        <div class="icon-box"><i class="fas fa-fw fa-envelope"></i></div>
+                        <span>arnavkhareaps@gmail.com</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:+918527035435">
+                        <div class="icon-box"><i class="fas fa-fw fa-phone"></i></div>
+                        <span>+91-8527035435</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.nsut.ac.in/" target="_blank" rel="noopener noreferrer">
+                        <div class="icon-box"><i class="fas fa-fw fa-university"></i></div>
+                        <span>NSUT</span>
+                    </a>
+                </li>
             </ul>
             <div class="social-links anim-hidden">
                 <a href="https://www.linkedin.com/in/arnav-khare-b0b956287/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -448,7 +475,7 @@
                 <div class="underline anim-hidden"></div>
                 <div class="section-content anim-hidden">
                     <p>I'm always interested in connecting with professionals in data analytics, product management, and business strategy. Feel free to reach out for collaborations, opportunities, or just to say hello!</p>
-                    <form class="contact-form" action="#" method="POST">
+                    <form class="contact-form" action="https://formspree.io/f/xnnvlobw" method="POST">
                         <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
                         <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
                         <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
