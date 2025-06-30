@@ -69,26 +69,23 @@
             min-height: 2.5em;
             font-weight: 500;
         }
-        /* Add this new rule anywhere in your CSS */
         .project-card-link {
-            text-decoration: none; /* Removes the underline */
-            color: inherit;       /* Makes text inside inherit its color */
-            display: block;       /* Ensures it behaves like a block element */
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }        
         
         .contact-list { list-style: none; padding: 0; margin-bottom: 2rem; width: 100%; }
         .contact-list li { display: flex; align-items: center; margin-bottom: 1rem; color: #30253E; font-size: 0.85rem; }
-        /* NEW: Added styles for the new hyperlinks */
         .contact-list li a {
             display: flex;
             align-items: center;
-            text-decoration: none; /* Removes underline */
-            color: inherit; /* Uses the parent's text color */
+            text-decoration: none;
+            color: inherit;
             transition: color 0.3s ease;
         }
-        /* NEW: Added a hover effect for the link */
         .contact-list li a:hover {
-            color: #9177d1; /* Main purple color on hover */
+            color: #9177d1;
         }
         .icon-box { width: 32px; height: 32px; border-radius: 8px; background-color: #F1F3F5; display: flex; align-items: center; justify-content: center; margin-right: 1rem; }
         .icon-box i { color: #9177d1; }
@@ -124,77 +121,24 @@
         .underline { width: 80px; height: 4px; background: #9177d1; margin-bottom: 2rem; border-radius: 2px; }
         .about-intro { font-size: 1.1rem; line-height: 1.6; color: #30253E; margin-bottom: 2.5rem; }
         .sub-heading { font-size: 1.8rem; font-weight: bold; color: #9177d1; margin: 2.5rem 0 1.5rem 0; }
-
-        .resume-link {
-            text-decoration: none;
-            color: inherit;
-            display: inline-flex;
-            align-items: baseline;
-        }
-        .resume-prompt {
-            font-size: 0.9rem;
-            font-weight: 400;
-            opacity: 0.5;
-            margin-left: -0.4rem;
-            transition: opacity 0.3s ease;
-        }
-        .resume-link:hover .resume-prompt {
-            opacity: 1;
-        }
+        .resume-link { text-decoration: none; color: inherit; display: inline-flex; align-items: baseline; }
+        .resume-prompt { font-size: 0.9rem; font-weight: 400; opacity: 0.5; margin-left: 0rem; transition: opacity 0.3s ease; }
+        .resume-link:hover .resume-prompt { opacity: 1; }
 
 
         /* --- SKILLS & TECH STACK --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-        .skill-card {
-            background-color: #f8f9fa;
-            border: 2px solid #E9ECEF;
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: #9177d1;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .skill-card { background-color: #f8f9fa; border: 2px solid #E9ECEF; border-radius: 12px; padding: 1.5rem; transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; }
+        .skill-card:hover { transform: translateY(-5px); border-color: #9177d1; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .skill-card .icon { font-size: 1.5rem; color: #9177d1; margin-bottom: 1rem; }
         .skill-card h4 { font-size: 1.2rem; font-weight: 600; color: #30253E; margin-bottom: 0.5rem; }
         .skill-card p { font-size: 0.9rem; line-height: 1.5; color: #495057; }
-
-        .tech-stack-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #495057;
-        }
-        .tech-item img, .tech-item i {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-        .tech-item i {
-            font-size: 40px;
-            color: #9177d1;
-        }
-        .tech-item:hover img, .tech-item:hover i {
-            transform: scale(1.1);
-        }
+        .tech-stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 1.5rem; text-align: center; }
+        .tech-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; color: #495057; }
+        .tech-item img, .tech-item i { width: 48px; height: 48px; object-fit: contain; transition: transform 0.3s ease; }
+        .tech-item i { font-size: 40px; color: #9177d1; }
+        .tech-item:hover img, .tech-item:hover i { transform: scale(1.1); }
         
-
         /* --- PROJECTS SECTION --- */
         .portfolio-grid { 
             display: grid; 
@@ -208,24 +152,82 @@
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
-            overflow: hidden; /* <-- ADD THIS LINE */
+            overflow: hidden;
         }
         .project-card:hover { 
             transform: translateY(-8px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); 
             border-color: #9177d1;
-            cursor: pointer; /* <-- ADD THIS LINE */
+            cursor: pointer;
         }
+
+        /* --- NEW HOVER EFFECT STYLES START HERE --- */
+        
+        /* 1. Wrapper for image to position the overlay */
+        .project-image-wrapper {
+            position: relative;
+            overflow: hidden; /* This clips the zoomed image */
+            height: 180px; /* Set a fixed height for consistency */
+        }
+
+        /* 2. Adjust the actual image to fill the wrapper */
         .project-image {
-            height: 150px;
+            height: 100%;
             width: 100%;
             object-fit: cover;
-            /* The border-radius, negative margin, and border-bottom are no longer needed. */
-            /* We still need some space between the image and the content below it. */
-            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease; /* For the smooth zoom effect */
         }
+
+        /* 3. The overlay that fades in */
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(48, 37, 62, 0.85); /* Dark, semi-transparent purple */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        /* 4. The "View Project" prompt */
+        .view-prompt {
+            color: #FFFFFF;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0; /* Hidden by default */
+            transform: scale(0.9); /* Start slightly smaller */
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        /* 5. The eye icon */
+        .view-prompt i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 6. The hover triggers */
+        .project-card:hover .project-overlay,
+        .project-card:hover .view-prompt {
+            opacity: 1; /* Fade in the overlay and prompt */
+        }
+
+        .project-card:hover .view-prompt {
+            transform: scale(1); /* Scale the prompt to normal size */
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05); /* Zoom in the image */
+        }
+        
+        /* --- NEW HOVER EFFECT STYLES END HERE --- */
+        
         .project-content {
-            padding: 0 1.5rem 1.5rem 1.5rem;
+            padding: 1.5rem; /* Unified padding */
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -247,8 +249,8 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: auto;   /* <-- CHANGE THIS BACK TO 'auto' */
-            padding-top: 1rem;  /* Add some padding for spacing */
+            margin-top: auto;
+            padding-top: 1rem;
         }
         .tag {
             background-color: #e9ecef;
@@ -258,35 +260,12 @@
             padding: 0.25rem 0.6rem;
             border-radius: 12px;
         }
-        .view-case-study { 
-            color: #9177d1; 
-            font-weight: 600; 
-            cursor: pointer; 
-            text-decoration: none; 
-            margin-top: 1rem;
-        }
-        .view-case-study:hover { text-decoration: underline; }
         
-
         /* --- ANIMATIONS --- */
-        .anim-hidden {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-        .anim-show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .typed-cursor {
-            opacity: 1;
-            animation: typedjsBlink 0.7s infinite;
-            vertical-align: middle;
-        }
-        @keyframes typedjsBlink {
-            50% { opacity: 0.0; }
-        }
-
+        .anim-hidden { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+        .anim-show { opacity: 1; transform: translateY(0); }
+        .typed-cursor { opacity: 1; animation: typedjsBlink 0.7s infinite; vertical-align: middle; }
+        @keyframes typedjsBlink { 50% { opacity: 0.0; } }
 
         /* --- CONTACT & MODAL --- */
         .contact-form { margin-top: 1.5rem; }
@@ -295,20 +274,14 @@
         .form-group input, .form-group textarea { width: 100%; padding: 0.75rem; border: 1px solid #E9ECEF; border-radius: 8px; font-family: inherit; font-size: 1rem; }
         .submit-btn { background-color: #9177d1; color: #FFFFFF; border: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease, transform 0.3s ease; }
         .submit-btn:hover { background-color: #7a62b3; transform: translateY(-2px); }
-        .modal {
-            display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center;
-        }
+        .modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; }
         .modal-content { background-color: #FFFFFF; margin: auto; padding: 2rem; border-radius: 10px; max-width: 800px; width: 90%; position: relative; }
         .close-modal { color: #aaa; position: absolute; top: 10px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; }
         .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; margin-top: 1rem; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .button-link { display: inline-block; background-color: #9177d1; color: #FFFFFF; text-decoration: none; padding: 0.75rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 500; margin: 1rem 0; }
 
-        @media (max-width: 1200px) {
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
+        @media (max-width: 1200px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 992px) {
             body { display: block; height: auto; overflow-y: auto; padding: 0; }
             .container { display: block; width: 100%; padding: 0; gap: 0; }
@@ -334,34 +307,13 @@
             <h1 class="profile-name anim-hidden">Arnav Khare</h1>
             <div id="typed-title-container" class="profile-title anim-hidden"><span id="typed-title"></span></div>
             <ul class="contact-list anim-hidden">
-                <li>
-                    <a href="mailto:arnavkhareaps@gmail.com">
-                        <div class="icon-box"><i class="fas fa-fw fa-envelope"></i></div>
-                        <span>arnavkhareaps@gmail.com</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="tel:+918527035435">
-                        <div class="icon-box"><i class="fas fa-fw fa-phone"></i></div>
-                        <span>+91-8527035435</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.nsut.ac.in/" target="_blank" rel="noopener noreferrer">
-                        <div class="icon-box"><i class="fas fa-fw fa-university"></i></div>
-                        <span>NSUT</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Noida,+India" target="_blank" rel="noopener noreferrer">
-                        <div class="icon-box"><i class="fas fa-fw fa-map-marker-alt"></i></div>
-                        <span>Noida, India</span>
-                    </a>
-                </li>             
+                <li><a href="mailto:arnavkhareaps@gmail.com"><div class="icon-box"><i class="fas fa-fw fa-envelope"></i></div><span>arnavkhareaps@gmail.com</span></a></li>
+                <li><a href="tel:+918527035435"><div class="icon-box"><i class="fas fa-fw fa-phone"></i></div><span>+91-8527035435</span></a></li>
+                <li><a href="http://www.nsut.ac.in/" target="_blank" rel="noopener noreferrer"><div class="icon-box"><i class="fas fa-fw fa-university"></i></div><span>NSUT</span></a></li>
+                <li><a href="https://www.google.com/maps/search/?api=1&query=Noida,+India" target="_blank" rel="noopener noreferrer"><div class="icon-box"><i class="fas fa-fw fa-map-marker-alt"></i></div><span>Noida, India</span></a></li>             
             </ul>
             <div class="social-links anim-hidden">
                 <a href="https://www.linkedin.com/in/arnav-khare-b0b956287/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <!-- Add this line for GitHub -->
                 <a href="https://github.com/ArnavKhare21" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
@@ -369,18 +321,9 @@
         <div class="right-panel">
             <!-- About Section -->
             <section id="about" class="content-section active">
-                <div class="heading-wrapper anim-hidden">
-                    <a href="https://arnav-khare-portfolio.vercel.app/ArnavKhare-Resume-2025.pdf" target="_blank" class="resume-link">
-                        <h2 class="section-heading">
-                            About Me
-                            <span class="resume-prompt">(click me!)</span>
-                        </h2>
-                    </a>
-                </div>
+                <div class="heading-wrapper anim-hidden"><a href="https://arnav-khare-portfolio.vercel.app/ArnavKhare-Resume-2025.pdf" target="_blank" class="resume-link"><h2 class="section-heading">About Me<span class="resume-prompt">(click me!)</span></h2></a></div>
                 <div class="underline anim-hidden"></div>
-                <p class="about-intro anim-hidden">
-                    As a final-year B.Tech student at Netaji Subhas University of Technology, I thrive at the intersection of data analytics, product strategy, and management consulting. My experience, from building financial models in Excel to collaborating with BCG consultants on Power BI dashboards, is centered on a single goal: translating complex data into actionable business strategy. Whether it's architecting a predictive churn model in Python to save $1.5M in revenue or authoring a go-to-market strategy for a new app, I am passionate about owning problems end-to-end—from initial analysis to final recommendation. I am driven to build products and strategies that are not just technically sound, but commercially impactful.
-                </p>
+                <p class="about-intro anim-hidden">As a final-year B.Tech student at Netaji Subhas University of Technology, I thrive at the intersection of data analytics, product strategy, and management consulting. My experience, from building financial models in Excel to collaborating with BCG consultants on Power BI dashboards, is centered on a single goal: translating complex data into actionable business strategy. Whether it's architecting a predictive churn model in Python to save $1.5M in revenue or authoring a go-to-market strategy for a new app, I am passionate about owning problems end-to-end—from initial analysis to final recommendation. I am driven to build products and strategies that are not just technically sound, but commercially impactful.</p>
                 <h3 class="sub-heading anim-hidden">What I Do</h3>
                 <div class="skills-grid">
                     <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-chart-line"></i></div><h4>Data Analytics & Strategy</h4><p>Building comprehensive financial models, performing TCO analysis, and synthesizing data to identify key market opportunities and define performance targets.</p></div>
@@ -388,46 +331,14 @@
                     <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-sitemap"></i></div><h4>Management & Consulting</h4><p>Synthesizing quantitative and qualitative data to drive go/no-go investment decisions and develop strategic roadmaps for market entry and growth.</p></div>
                     <div class="skill-card anim-hidden"><div class="icon"><i class="fas fa-users"></i></div><h4>Leadership & Execution</h4><p>Leading cross-functional teams, managing large-scale events and prize pools, and directing digital content strategies to engage wide audiences.</p></div>
                 </div>
-
                 <h3 class="sub-heading anim-hidden">My Tech Stack</h3>
                 <div class="tech-stack-grid anim-hidden">
-
-                    <!-- Python (from CDN) -->
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Logo">
-                        <span>Python</span>
-                    </div>
-
-                    <!-- SQL (from CDN) -->
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL Logo">
-                        <span>SQL</span>
-                    </div>
-
-                    <!-- Power BI (using your specified link) -->
-                    <div class="tech-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI Logo">
-                        <span>Power BI</span>
-                    </div>
-
-                    <!-- Tableau (from CDN) -->
-                    <div class="tech-item">
-                        <img src="data:image/png;base64,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" alt="Tableau Logo">
-                        <span>Tableau</span>
-                    </div>
-
-                    <!-- MS Excel (using your specified link) -->
-                    <div class="tech-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" alt="MS Excel Logo">
-                        <span>MS Excel</span>
-                    </div>
-
-                    <!-- Pandas (from CDN) -->
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original-wordmark.svg" alt="Pandas Logo">
-                        <span>Pandas</span>
-                    </div>
-
+                    <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Logo"><span>Python</span></div>
+                    <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" alt="SQL Logo"><span>SQL</span></div>
+                    <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI Logo"><span>Power BI</span></div>
+                    <div class="tech-item"><img src="data:image/png;base64,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" alt="Tableau Logo"><span>Tableau</span></div>
+                    <div class="tech-item"><img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" alt="MS Excel Logo"><span>MS Excel</span></div>
+                    <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original-wordmark.svg" alt="Pandas Logo"><span>Pandas</span></div>
                 </div>
             </section>
 
@@ -436,8 +347,18 @@
                 <div class="heading-wrapper anim-hidden"><h2 class="section-heading">Projects</h2></div>
                 <div class="underline anim-hidden"></div>
                 <div class="portfolio-grid">
+                    
+                    <!-- Project 1 -->
                     <div class="project-card anim-hidden">
-                        <img src="images/project-churn.png" alt="A dashboard showing predictive churn analysis" class="project-image">
+                        <div class="project-image-wrapper">
+                            <img src="images/project-churn.png" alt="Churn Analysis Dashboard" class="project-image">
+                            <div class="project-overlay">
+                                <div class="view-prompt">
+                                    <i class="fas fa-eye"></i>
+                                    <span>View Project</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="project-content">
                             <h3>Predictive Churn Analysis</h3>
                             <ul>
@@ -451,17 +372,25 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Wrap the entire card in an <a> tag -->
+
+                    <!-- Project 2 (Clickable Card) -->
                     <a href="#" id="habit-horizon-card" class="project-card-link">
                         <div class="project-card anim-hidden">
-                            <img src="images/project-habit horizon.png" alt="Habit Horizon UI" class="project-image">
+                             <div class="project-image-wrapper">
+                                <img src="images/project-habit horizon.png" alt="Habit Horizon UI" class="project-image">
+                                <div class="project-overlay">
+                                    <div class="view-prompt">
+                                        <i class="fas fa-eye"></i>
+                                        <span>View Demo</span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="project-content">
                                 <h3>Product Strategy: Habit Horizon</h3>
                                 <ul>
                                     <li>Identified market gap via user research and authored a full Product Requirement Document (PRD).</li>
                                     <li>Defined core value proposition, KPIs, and GTM strategy.</li>
                                 </ul>
-                                <!-- NOTE: The "View Case Study" link is now GONE -->
                                 <div class="project-tags">
                                     <span class="tag">Product Management</span>
                                     <span class="tag">Figma</span>
@@ -470,8 +399,18 @@
                             </div>
                         </div>
                     </a>
+
+                    <!-- Project 3 -->
                     <div class="project-card anim-hidden">
-                        <img src="images/project-consulting.png" alt="A dashboard showing predictive churn analysis" class="project-image">
+                        <div class="project-image-wrapper">
+                            <img src="images/project-consulting.png" alt="EV Sector Strategic Roadmap" class="project-image">
+                             <div class="project-overlay">
+                                <div class="view-prompt">
+                                    <i class="fas fa-eye"></i>
+                                    <span>View Project</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="project-content">
                             <h3>Strategic Case Study: EV Sector</h3>
                             <ul>
@@ -484,6 +423,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </section>
 
@@ -533,8 +473,7 @@
             }
     
             navLinks.forEach(link => {
-                const isResumeLink = link.classList.contains('resume-link');
-                if (!isResumeLink) {
+                if (!link.classList.contains('resume-link')) {
                     link.addEventListener('click', (event) => {
                         event.preventDefault();
                         showTab(link.getAttribute('href'));
@@ -544,33 +483,35 @@
     
             // --- Modal Logic ---
             const modal = document.getElementById("project-modal");
-            const habitCard = document.getElementById("habit-horizon-card"); // This now correctly gets the <a> tag
+            const habitCard = document.getElementById("habit-horizon-card");
             const closeModalBtn = document.querySelector(".close-modal");
 
-            // NEW, CORRECTED LISTENER:
             if (habitCard) {
                 habitCard.addEventListener('click', function(event) {
-                    // 1. Prevent the link from jumping the page to the top
                     event.preventDefault(); 
-                    
-                    // 2. Show the modal
                     modal.style.display = "flex"; 
                 });
             }
 
-            // This part remains the same
             if (closeModalBtn) closeModalBtn.onclick = () => { modal.style.display = "none"; };
             window.onclick = (event) => {
                 if (event.target == modal) modal.style.display = "none";
             };
+
+            // --- Initial Tab Display Logic ---
+            const initialTabId = window.location.hash;
+            const validTabIds = ['#about', '#projects', '#contact'];
+            if (initialTabId && validTabIds.includes(initialTabId)) {
+                showTab(initialTabId);
+            } else {
+                showTab('#about');
+            }
 
             // --- Scroll Animation Logic ---
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('anim-show');
-                    } else {
-                        entry.target.classList.remove('anim-show');
                     }
                 });
             }, { threshold: 0.1 });
