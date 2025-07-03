@@ -140,6 +140,31 @@
         .tech-item:hover img, .tech-item:hover i { transform: scale(1.1); }
         
         /* --- PROJECTS SECTION --- */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .filter-btn {
+            background-color: transparent;
+            border: 1px solid #E9ECEF;
+            color: #495057;
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover {
+            background-color: #f1f3f5;
+            color: #9177d1;
+        }
+        .filter-btn.active {
+            background-color: #9177d1;
+            color: #FFFFFF;
+            border-color: #9177d1;
+        }
         .portfolio-grid { 
             display: grid; 
             grid-template-columns: repeat(3, 1fr);
@@ -264,6 +289,7 @@
         /* --- ANIMATIONS --- */
         .anim-hidden { opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
         .anim-show { opacity: 1; transform: translateY(0); }
+        .hide { display: none; }
         .typed-cursor { opacity: 1; animation: typedjsBlink 0.7s infinite; vertical-align: middle; }
         @keyframes typedjsBlink { 50% { opacity: 0.0; } }
 
@@ -346,10 +372,19 @@
             <section id="projects" class="content-section">
                 <div class="heading-wrapper anim-hidden"><h2 class="section-heading">Projects</h2></div>
                 <div class="underline anim-hidden"></div>
+                
+                <!-- Portfolio Filters -->
+                <div class="portfolio-filters anim-hidden">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="data">Data</button>
+                    <button class="filter-btn" data-filter="product">Product</button>
+                    <button class="filter-btn" data-filter="consulting">Consulting</button>
+                </div>
+
                 <div class="portfolio-grid">
                     
                     <!-- Project 1 -->
-                    <div class="project-card anim-hidden">
+                    <div class="project-card anim-hidden portfolio-item" data-category="data">
                         <div class="project-image-wrapper">
                             <img src="images/project-churn.png" alt="Churn Analysis Dashboard" class="project-image">
                             <div class="project-overlay">
@@ -374,7 +409,7 @@
                     </div>
 
                     <!-- Project 2 (Clickable Card) -->
-                    <a href="#" id="habit-horizon-card" class="project-card-link">
+                    <a href="#" id="habit-horizon-card" class="project-card-link portfolio-item" data-category="product">
                         <div class="project-card anim-hidden">
                              <div class="project-image-wrapper">
                                 <img src="images/project-habit horizon.png" alt="Habit Horizon UI" class="project-image">
@@ -401,7 +436,7 @@
                     </a>
 
                     <!-- Project 3 -->
-                    <div class="project-card anim-hidden">
+                    <div class="project-card anim-hidden portfolio-item" data-category="consulting">
                         <div class="project-image-wrapper">
                             <img src="images/project-consulting.png" alt="EV Sector Strategic Roadmap" class="project-image">
                              <div class="project-overlay">
@@ -527,6 +562,30 @@
                 backDelay: 1500,
                 loop: true,
                 smartBackspace: true
+            });
+            
+            // --- Portfolio Filter Logic ---
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    // Remove active class from all buttons and add to the clicked one
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+
+                    const filter = e.currentTarget.dataset.filter;
+
+                    portfolioItems.forEach(item => {
+                        const itemCategory = item.dataset.category;
+                        // Show item if filter is 'all' or if the item's category matches the filter
+                        if (filter === 'all' || itemCategory === filter) {
+                            item.classList.remove('hide');
+                        } else {
+                            item.classList.add('hide');
+                        }
+                    });
+                });
             });
         });
     </script>
