@@ -445,6 +445,60 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- NEW PROJECT: Winzo Product Teardown -->
+                    <a href="#" id="winzo-card" class="project-card-link portfolio-item" data-category="product">
+                        <div class="project-card anim-hidden">
+                            <div class="project-image-wrapper">
+                                <img src="images/project-winzo.png" alt="Winzo Games App Interface" class="project-image">
+                                <div class="project-overlay">
+                                    <div class="view-prompt">
+                                        <i class="fas fa-eye"></i>
+                                        <span>View Teardown</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3>Product Teardown: Winzo Games</h3>
+                                <ul>
+                                    <li>Analyzed user acquisition funnels and monetization strategies.</li>
+                                    <li>Identified key product hooks driving a 4.6-star rating from 1M+ reviews.</li>
+                                    <li>Proposed features to enhance user retention and average revenue per user (ARPU).</li>
+                                </ul>
+                                <div class="project-tags">
+                                    <span class="tag">Product Management</span>
+                                    <span class="tag">App Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- NEW PROJECT: Bain & Co. Case Competition -->
+                    <a href="#" id="bain-card" class="project-card-link portfolio-item" data-category="consulting">
+                        <div class="project-card anim-hidden">
+                            <div class="project-image-wrapper">
+                                <img src="images/project-bain.png" alt="Bain & Co. Case Competition" class="project-image">
+                                <div class="project-overlay">
+                                    <div class="view-prompt">
+                                        <i class="fas fa-eye"></i>
+                                        <span>View Case Study</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3>Bain & Co. Case Competition</h3>
+                                <ul>
+                                    <li>Led Case Catalysts NSUT in a national-level Bain & Co. competition.</li>
+                                    <li>Developed a market entry strategy for a global CPG firm in an APAC region.</li>
+                                    <li>Conducted financial modeling and risk assessment to support the proposal.</li>
+                                </ul>
+                                <div class="project-tags">
+                                    <span class="tag">Management Consulting</span>
+                                    <span class="tag">Case Study</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
 
                 </div>
             </section>
@@ -469,7 +523,7 @@
         </div>
     </div>
     
-    <!-- NEW VENDOR MODAL -->
+    <!-- Vendor Modal -->
     <div id="vendor-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">×</span>
@@ -479,6 +533,26 @@
             <div class="video-container">
                 <iframe title="SalesDashboard" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiYTBjYjJjMDQtOGVmOC00MjhkLTk1NzgtZDEzNTBhMzU1YmRhIiwidCI6IjRjNDM0NjVkLWY5NmEtNGY5NC1iMDRiLWM0YWIwY2Q0NDM0ZCJ9" frameborder="0" allowFullScreen="true"></iframe>
             </div>
+        </div>
+    </div>
+
+    <!-- NEW Winzo Modal -->
+    <div id="winzo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>Product Teardown: Winzo Games</h2><hr style="margin: 1rem 0;">
+            <p>A deep dive into the product strategy, user funnels, and monetization mechanics of the Winzo gaming platform. This report analyzes user acquisition, retention hooks, and proposes strategic enhancements.</p>
+            <a href="/Winzo-Product-Teardown.pdf" class="button-link" target="_blank">View Full Teardown (PDF)</a>
+        </div>
+    </div>
+
+    <!-- NEW Bain & Co. Case Modal -->
+    <div id="bain-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2>Bain & Co. Case Competition: Market Entry Strategy</h2><hr style="margin: 1rem 0;">
+            <p>This presentation, created for the Bain & Co. national case competition, outlines a comprehensive market entry strategy for a global CPG firm looking to expand into a new APAC region.</p>
+            <a href="/Case-Catalysts-NSUT.pdf" class="button-link" target="_blank">View Case Deck (PDF)</a>
         </div>
     </div>
 
@@ -538,6 +612,37 @@
             if(closeVendorModalBtn) {
                 closeVendorModalBtn.onclick = () => { vendorModal.style.display = "none"; };
             }
+            
+            // Winzo Product Teardown Modal
+            const winzoModal = document.getElementById("winzo-modal");
+            const winzoCard = document.getElementById("winzo-card");
+            const closeWinzoModalBtn = winzoModal.querySelector(".close-modal");
+
+            if (winzoCard) {
+                winzoCard.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    winzoModal.style.display = "flex";
+                });
+            }
+            if (closeWinzoModalBtn) {
+                closeWinzoModalBtn.onclick = () => { winzoModal.style.display = "none"; };
+            }
+
+            // Bain & Co. Case Modal
+            const bainModal = document.getElementById("bain-modal");
+            const bainCard = document.getElementById("bain-card");
+            const closeBainModalBtn = bainModal.querySelector(".close-modal");
+
+            if (bainCard) {
+                bainCard.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    bainModal.style.display = "flex";
+                });
+            }
+            if (closeBainModalBtn) {
+                closeBainModalBtn.onclick = () => { bainModal.style.display = "none"; };
+            }
+
 
             // Generic close when clicking outside any modal
             window.onclick = (event) => {
@@ -546,6 +651,12 @@
                 }
                 if (event.target == vendorModal) {
                     vendorModal.style.display = "none";
+                }
+                if (event.target == winzoModal) {
+                    winzoModal.style.display = "none";
+                }
+                if (event.target == bainModal) {
+                    bainModal.style.display = "none";
                 }
             };
 
